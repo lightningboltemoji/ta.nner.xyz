@@ -14,7 +14,7 @@ const blink = () => {
 const type = () => {
     if (value.value !== props.text) {
         value.value = props.text.substring(0, value.value.length + 1);
-        setTimeout(type, Math.random() * 250);
+        setTimeout(type, Math.random() * 200 + 50);
     } else {
         setTimeout(blink, 800);
     }
