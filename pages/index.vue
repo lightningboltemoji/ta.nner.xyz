@@ -20,8 +20,8 @@ onMounted(() => {
                 src="/public/memoji.mp4?url"
             />
         </div>
-        <h1 class="font-mono text-4xl mt-7" ref="name">
-            <type-effect text="Tanner Cecchetti" />
+        <h1 class="font-mono text-3xl mt-7" ref="name">
+            <type-effect start text="Tanner Cecchetti" />
         </h1>
         <div class="flex flex-col items-center mt-5">
             <Transition name="slide-fade" appear v-if="show">
@@ -35,12 +35,11 @@ onMounted(() => {
         </div>
     </div>
     <div class="flex flex-col justify-center items-center min-w-screen min-h-screen">
-        <h1>Work experience</h1>
+        <h1 class="font-mono text-3xl mt-7">
+            <type-effect text="Work experience" />
+        </h1>
         <h2>Amazon Web Services, 2022 -</h2>
         <h2>HealthSparq, 2015 - 2022</h2>
-    </div>
-    <div>
-        <h1></h1>
     </div>
 </template>
 

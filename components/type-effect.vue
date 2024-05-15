@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 const props = defineProps<{
     text: string;
 }>();
@@ -14,15 +16,15 @@ const blink = () => {
 const type = () => {
     if (value.value !== props.text) {
         value.value = props.text.substring(0, value.value.length + 1);
-        setTimeout(type, Math.random() * 200 + 50);
+        setTimeout(type, Math.random() * 150 + 50);
     } else {
         setTimeout(blink, 800);
     }
 };
-
-onMounted(() => {
-    type();
-});
 </script>
 
-<template><span class="invisible">▌</span>{{ value }}<span :style="{ visibility: cursor }">▌</span></template>
+<template>
+    <detect-scroll-in :callback="type"
+        ><span class="invisible">▌</span>{{ value }}<span :style="{ visibility: cursor }">▌</span></detect-scroll-in
+    >
+</template>
