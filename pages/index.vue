@@ -25,11 +25,11 @@ onMounted(() => {
             <Transition name="slide-fade" appear v-if="show">
                 <h2><span class="opacity-20">a</span> Software Engineer 👨‍💻</h2>
             </Transition>
-            <h2 v-else>👨‍💻</h2>
+            <h2 v-else class="invisible">👨‍💻</h2>
             <Transition name="slide-fade" appear v-if="show">
                 <h2><span class="opacity-20">in</span> Seattle, WA 🌳</h2>
             </Transition>
-            <h2 v-else>🌳</h2>
+            <h2 v-else class="invisible">🌳</h2>
         </div>
     </div>
     <div class="flex flex-col justify-center items-center min-w-screen min-h-screen">
@@ -46,8 +46,7 @@ onMounted(() => {
     transition: all 0.6s ease-out;
 }
 
-.slide-fade-enter-from,
-.slide-fade-leave-to {
+.slide-fade-enter-from {
     transform: translateY(20px);
     opacity: 0;
 }
