@@ -12,11 +12,11 @@ onMounted(() => {
         scrollY: {
             scaleX: [
                 ["screenHeight/2", "screenHeight"],
-                [1, "(((screenWidth / 2) ** 2 + (screenHeight + 100) ** 2)) ** 0.5/100"],
+                [1, "(((screenWidth / 2) ** 2 + (screenHeight + 200) ** 2)) ** 0.5/100"],
             ],
             scaleY: [
                 ["screenHeight/2", "screenHeight"],
-                [1, "(((screenWidth / 2) ** 2 + (screenHeight + 100) ** 2)) ** 0.5/100"],
+                [1, "(((screenWidth / 2) ** 2 + (screenHeight + 200) ** 2)) ** 0.5/100"],
             ],
         },
     });
@@ -34,7 +34,7 @@ onMounted(() => {
 <template>
     <div class="flex justify-center items-center min-w-screen">
         <div
-            class="fixed bg-black rounded-full w-[200px] h-[200px] top-[100vh] explodeAfterFirst duration-300 ease-in-out"
+            class="fixed bg-black rounded-full w-[200px] h-[200px] top-[100vh] explodeAfterFirst duration-500 ease-out"
         />
     </div>
     <div class="flex flex-col justify-center items-center min-w-screen min-h-screen">
