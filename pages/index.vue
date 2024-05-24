@@ -6,28 +6,26 @@ const show = ref(false);
 onMounted(() => {
     show.value = true;
 
-    // Workaround https://github.com/alexfoxy/lax.js/issues/156
-    window.lax = { presets: lax.presets };
-
     lax.init();
     lax.addDriver("scrollY", () => window.scrollY);
     lax.addElements(".explodeAfterFirst", {
         scrollY: {
             scaleX: [
                 ["screenHeight/2", "screenHeight"],
-                [1, "(screenWidth + screenHeight)/100"],
-                { easing: "easeInOut" },
+                [1, "(((screenWidth / 2) ** 2 + (screenHeight + 100) ** 2)) ** 0.5/100"],
             ],
             scaleY: [
                 ["screenHeight/2", "screenHeight"],
-                [1, "(screenWidth + screenHeight)/100"],
-                { easing: "easeInOut" },
+                [1, "(((screenWidth / 2) ** 2 + (screenHeight + 100) ** 2)) ** 0.5/100"],
             ],
         },
     });
     lax.addElements(".fadeInOut", {
         scrollY: {
-            opacity: [["elInY", "elInY+elHeight", "elOutY-elHeight", "elOutY"], [0, 1, 1, 0], { easing: "easeInOut" }],
+            opacity: [
+                ["elInY", "elInY+elHeight", "elOutY-elHeight", "elOutY"],
+                [0, 1, 1, 0],
+            ],
         },
     });
 });
@@ -35,10 +33,12 @@ onMounted(() => {
 
 <template>
     <div class="flex justify-center items-center min-w-screen">
-        <div class="fixed bg-black rounded-full w-[200px] h-[200px] top-[100vh] explodeAfterFirst" />
+        <div
+            class="fixed bg-black rounded-full w-[200px] h-[200px] top-[100vh] explodeAfterFirst duration-300 ease-in-out"
+        />
     </div>
     <div class="flex flex-col justify-center items-center min-w-screen min-h-screen">
-        <div class="flex flex-col justify-center items-center fadeInOut">
+        <div class="flex flex-col justify-center items-center fadeInOut pb-[10vh] md:pb-0">
             <div class="relative">
                 <video
                     class="size-[200px] bg-black rounded-full"
