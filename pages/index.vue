@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import lax from "lax.js";
+import email from "~/public/paper-plane.svg?raw";
+import linkedin from "~/public/linkedin.svg?raw";
+import github from "~/public/github-alt.svg?raw";
 
-const show = ref(false);
+const show = ref(true);
 
 onMounted(() => {
-    show.value = true;
-
     lax.init();
     lax.addDriver("scrollY", () => window.scrollY);
     lax.addElements(".explodeAfterFirst", {
@@ -32,11 +33,9 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="flex justify-center items-center min-w-screen">
-        <div
-            class="fixed bg-black rounded-full w-[200px] h-[200px] top-[100vh] explodeAfterFirst duration-500 ease-out"
-        />
-    </div>
+    <div
+        class="fixed bg-black rounded-full w-[200px] h-[200px] top-[100vh] left-[calc(50vw-100px)] explodeAfterFirst duration-500 ease-out"
+    />
     <div class="flex flex-col justify-center items-center min-w-screen min-h-screen">
         <div class="flex flex-col justify-center items-center fadeInOut pb-[10vh] md:pb-0">
             <div class="relative">
@@ -52,15 +51,30 @@ onMounted(() => {
             <h1 class="font-mono text-3xl mt-7" ref="name">
                 <type-effect start text="Tanner Cecchetti" />
             </h1>
-            <div class="flex flex-col items-center mt-5">
-                <Transition name="slide-fade" appear v-if="show">
+            <Transition name="slide-fade" appear v-show="show">
+                <div class="flex flex-col items-center mt-5 pb-7 px-2 border-b-[1px] delay-100">
                     <h2><span class="opacity-20">a</span> Software Engineer 👨‍💻</h2>
-                </Transition>
-                <h2 v-else class="invisible">👨‍💻</h2>
-                <Transition name="slide-fade" appear v-if="show">
                     <h2><span class="opacity-20">in</span> Seattle, WA 🌳</h2>
+                </div>
+            </Transition>
+            <div class="flex items-center p-5">
+                <Transition name="slide-fade" appear v-show="show">
+                    <a href="mailto:t@nner.xyz" class="size-9 p-2 fill-zinc-800 delay-[300ms]" v-html="email" />
                 </Transition>
-                <h2 v-else class="invisible">🌳</h2>
+                <Transition name="slide-fade" appear v-show="show">
+                    <a
+                        href="https://github.com/lightningboltemoji"
+                        class="size-11 p-2 fill-zinc-800 ml-6 delay-[400ms]"
+                        v-html="github"
+                    />
+                </Transition>
+                <Transition name="slide-fade" appear v-show="show">
+                    <a
+                        href="https://www.linkedin.com/in/tanner-cecchetti/"
+                        class="size-10 p-2 fill-zinc-800 ml-6 delay-[500ms]"
+                        v-html="linkedin"
+                    />
+                </Transition>
             </div>
         </div>
     </div>
@@ -77,7 +91,9 @@ onMounted(() => {
 
 <style scoped>
 .slide-fade-enter-active {
-    transition: all 0.6s ease-out 0.4s;
+    transition-property: all;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-out;
 }
 
 .slide-fade-enter-from {

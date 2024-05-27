@@ -24,7 +24,5 @@ const type = () => {
 </script>
 
 <template>
-    <detect-scroll-in :callback="type"
-        ><span class="invisible">▌</span>{{ value }}<span :style="{ visibility: cursor }">▌</span></detect-scroll-in
-    >
+    <detect-scroll-in :callback="type">{{ value }}<span :style="{ visibility: cursor }">▌</span> </detect-scroll-in>
 </template>
