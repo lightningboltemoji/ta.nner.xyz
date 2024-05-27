@@ -1,5 +1,7 @@
 # [ta.nner.xyz](https://ta.nner.xyz)
 
+![Deploy Nuxt.js site to Pages](https://github.com/lightningboltemoji/ta.nner.xyz/actions/workflows/nuxtjs.yml/badge.svg)
+
 ## Setup
 
 ```bash
