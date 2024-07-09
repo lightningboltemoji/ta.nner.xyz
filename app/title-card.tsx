@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function TitleCard() {
   return (
-    <div className="flex flex-col justify-center items-center min-w-screen min-h-screen">
-      <div className="flex flex-col justify-center items-center fade-in-out pb-[10vh] md:pb-0">
+    <div className="relative flex flex-col justify-center items-center min-w-screen min-h-screen">
+      <div className="flex flex-col justify-center items-center pb-[10vh] md:pb-0">
         <div className="relative">
           <video className="size-[200px] bg-black rounded-full" autoPlay loop muted playsInline src="/memoji.mp4" />
         </div>

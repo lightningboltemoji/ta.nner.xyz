@@ -1,12 +1,6 @@
-import TitleCard from "./title-card";
-import WorkEduCard from "./work-edu-card";
+import Content from "./content";
 
 export default function Home() {
-  return (
-    <>
-      <div id="ball" className="fixed bg-black rounded-full" />
-      <TitleCard />
-      <WorkEduCard />
-    </>
-  );
+  // Since we can't 'use client' on a page
+  return <Content />;
 }
