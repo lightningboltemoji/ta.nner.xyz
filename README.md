@@ -1,6 +1,6 @@
 # [ta.nner.xyz](https://ta.nner.xyz)
 
-![Deploy Next.js site to Pages](https://github.com/lightningboltemoji/ta.nner.xyz/actions/workflows/nextjs.yml/badge.svg)
+![Deploy Nuxt.js site to Pages](https://github.com/lightningboltemoji/ta.nner.xyz/actions/workflows/nuxtjs.yml/badge.svg)
 
 ## Setup
 
@@ -21,11 +21,11 @@ bun dev
 Build the application for production:
 
 ```bash
-bun run build
+bun generate
 ```
 
 Locally preview production build:
 
 ```bash
-bun run serve
+bun preview
 ```
