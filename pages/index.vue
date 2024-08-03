@@ -23,15 +23,12 @@ onMounted(() => {
 
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
     const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-    const maxCircleSize = Math.sqrt((vw / 2) ** 2 + (vh + 120) ** 2) * 2;
+    const maxCircleRadius = Math.sqrt((vw / 2) ** 2 + (vh + 120) ** 2);
     const circleExpand = anime({
         targets: circle.value,
         easing: "linear",
         duration: 1000,
-        top: ["100vh", `calc(100vh - ${maxCircleSize / 2}px)`],
-        left: ["50vw", `calc(50vw - ${maxCircleSize / 2}px)`],
-        width: [0, maxCircleSize],
-        height: [0, maxCircleSize],
+        padding: [0, maxCircleRadius],
         autoplay: false,
     });
 
@@ -44,7 +41,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="fixed bg-black rounded-full z-10" ref="circle" />
+    <div
+        class="fixed top-[-10000px] bottom-[calc(-10000px-100vh)] left-[-10000px] right-[-10000px] m-auto w-0 h-0 bg-black rounded-full z-10"
+        ref="circle"
+    />
     <div class="flex flex-col justify-center items-center min-w-screen min-h-screen">
         <div class="flex flex-col justify-center items-center pb-[10vh] md:pb-0">
             <div class="relative">
