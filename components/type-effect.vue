@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import DetectScrollIn from "./detect-scroll-in.vue";
+import { useIntersectionObserver } from "@vueuse/core";
+import { onUnmounted } from "vue";
 
 const props = defineProps<{
     text: string;
 }>();
 
+const container = ref(null);
+const running = ref(false);
 const value = ref("");
-const cursor = ref("unset");
+const cursor = ref<"unset" | "hidden">("unset");
 
 const blink = () => {
     cursor.value = cursor.value === "hidden" ? "unset" : "hidden";
@@ -22,8 +25,16 @@ const type = () => {
         setTimeout(blink, 800);
     }
 };
+
+const { stop } = useIntersectionObserver(container, ([{ isIntersecting }]) => {
+    if (isIntersecting && !running.value) {
+        running.value = true;
+        type();
+    }
+});
+onUnmounted(stop);
 </script>
 
 <template>
-    <DetectScrollIn :callback="type">{{ value }}<span :style="{ visibility: cursor }">▌</span> </DetectScrollIn>
+    <div ref="container">{{ value }}<span :style="{ visibility: cursor }">▌</span></div>
 </template>

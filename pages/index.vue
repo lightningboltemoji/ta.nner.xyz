@@ -80,7 +80,7 @@ const circleStyles = computed(() => ({
     </div>
     <div class="flex flex-col justify-center items-center min-w-screen min-h-screen text-white">
         <div class="flex flex-col justify-center items-center z-20">
-            <h1 class="font-mono text-3xl mt-7">
+            <h1 class="font-mono text-3xl mt-7 mb-5">
                 <TypeEffect text="Work experience" />
             </h1>
             <h2>Amazon Web Services, 2022 -</h2>
