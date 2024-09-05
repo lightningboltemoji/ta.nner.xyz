@@ -33,13 +33,13 @@ onMounted(() => {
 
 const circleStyles = computed(() => ({
     transition: "transform 0.5s ease",
-    transform: expandCircle.value ? `scale(${maxCircleRadius.value / 5000})` : "scale(0)",
+    transform: expandCircle.value ? `scale(${maxCircleRadius.value / 1000})` : "scale(0)",
 }));
 </script>
 
 <template>
     <div
-        class="fixed top-[calc(100vh-5000px)] left-[calc(50vw-5000px)] w-[10000px] h-[10000px] bg-black rounded-full z-10"
+        class="fixed top-[calc(100vh-1000px)] left-[calc(50vw-1000px)] w-[2000px] h-[2000px] bg-black rounded-full z-10"
         :style="circleStyles"
     />
     <div class="flex flex-col justify-center items-center min-w-screen min-h-screen">
