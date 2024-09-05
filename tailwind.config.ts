@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Partial<Config> = {
   theme: {
@@ -7,8 +8,8 @@ const config: Partial<Config> = {
         screen: { raw: "screen" },
       },
       fontFamily: {
-        sans: ["Inter"],
-        mono: ["IBM\\ Plex\\ Mono"],
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
+        mono: ["'IBM Plex Mono'", ...defaultTheme.fontFamily.mono],
       },
       fontSize: {
         xxs: "0.6rem",
