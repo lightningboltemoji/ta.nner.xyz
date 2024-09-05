@@ -6,11 +6,13 @@ import emailSvg from "~/public/icon/paper-plane.svg?raw";
 import linkedinSvg from "~/public/icon/linkedin.svg?raw";
 import githubSvg from "~/public/icon/github-alt.svg?raw";
 
-const circle = ref(null);
 const subtitle = ref(null);
 const email = ref(null);
 const github = ref(null);
 const linkedin = ref(null);
+
+const expandCircle = ref(false);
+const maxCircleRadius = ref(0);
 
 onMounted(() => {
     anime
@@ -23,27 +25,22 @@ onMounted(() => {
 
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
     const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-    const maxCircleRadius = Math.sqrt((vw / 2) ** 2 + (vh + 120) ** 2);
-    const circleExpand = anime({
-        targets: circle.value,
-        easing: "linear",
-        duration: 1000,
-        padding: [0, maxCircleRadius],
-        autoplay: false,
-    });
+    maxCircleRadius.value = Math.sqrt((vw / 2) ** 2 + (vh + 120) ** 2);
 
     const scrollPercent = () => window.scrollY / (document.body.scrollHeight - vh);
-    window.onscroll = () => {
-        let p = Math.max(Math.min(scrollPercent(), 0.95), 0.1) - 0.1;
-        circleExpand.seek((p / 0.85) * circleExpand.duration);
-    };
+    window.onscroll = () => (expandCircle.value = scrollPercent() >= 0.5);
 });
+
+const circleStyles = computed(() => ({
+    transition: "transform 0.5s ease",
+    transform: expandCircle.value ? `scale(${maxCircleRadius.value / 5000})` : "scale(0)",
+}));
 </script>
 
 <template>
     <div
-        class="fixed top-[-10000px] bottom-[calc(-10000px-100vh)] left-[-10000px] right-[-10000px] m-auto w-0 h-0 bg-black rounded-full z-10"
-        ref="circle"
+        class="fixed top-[calc(100vh-5000px)] left-[calc(50vw-5000px)] w-[10000px] h-[10000px] bg-black rounded-full z-10"
+        :style="circleStyles"
     />
     <div class="flex flex-col justify-center items-center min-w-screen min-h-screen">
         <div class="flex flex-col justify-center items-center pb-[10vh] md:pb-0">
