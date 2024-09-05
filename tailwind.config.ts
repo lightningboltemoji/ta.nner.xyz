@@ -6,10 +6,10 @@ const config: Partial<Config> = {
       screens: {
         screen: { raw: "screen" },
       },
-      // fontFamily: {
-      //   sans: ["var(--font-inter)"],
-      //   mono: ["var(--font-ibm-plex-mono)"],
-      // },
+      fontFamily: {
+        sans: ["Inter"],
+        mono: ["IBM\\ Plex\\ Mono"],
+      },
       fontSize: {
         xxs: "0.6rem",
       },
