@@ -1,39 +1,41 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import anime from "animejs/lib/anime.es.js";
-
 import emailSvg from "~/public/icon/paper-plane.svg?raw";
 import linkedinSvg from "~/public/icon/linkedin.svg?raw";
 import githubSvg from "~/public/icon/github-alt.svg?raw";
+import { computed } from "vue";
+import { useWindowScroll, useWindowSize } from "@vueuse/core/index.cjs";
+import { ref } from "vue";
+import { onMounted } from "vue";
 
-const subtitle = ref(null);
-const email = ref(null);
-const github = ref(null);
-const linkedin = ref(null);
+const initialPaint = ref(false);
+onMounted(() => requestAnimationFrame(() => requestAnimationFrame(() => (initialPaint.value = true))));
 
-const expandCircle = ref(false);
-const maxCircleRadius = ref(0);
+const scroll = useWindowScroll();
+const scrollPercent = computed(() => scroll.y.value / (document.body.scrollHeight - windowSize.height.value));
 
-onMounted(() => {
-    anime
-        .timeline({ easing: "easeOutSine" })
-        .add({ targets: subtitle.value, translateY: [40, 0], opacity: [0, 1], duration: 500 })
-        .add({ targets: email.value, translateY: [30, 0], opacity: [0, 1], duration: 300 }, "-=200")
-        .add({ targets: github.value, translateY: [30, 0], opacity: [0, 1], duration: 300 }, "-=200")
-        .add({ targets: linkedin.value, translateY: [30, 0], opacity: [0, 1], duration: 300 }, "-=200")
-        .play();
-
-    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-    const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-    maxCircleRadius.value = Math.sqrt((vw / 2) ** 2 + (vh + 120) ** 2);
-
-    const scrollPercent = () => window.scrollY / (document.body.scrollHeight - vh);
-    window.onscroll = () => (expandCircle.value = scrollPercent() >= 0.5);
-});
+const windowSize = useWindowSize();
+const maxCircleRadius = computed(() =>
+    Math.sqrt((windowSize.width.value / 2) ** 2 + (windowSize.height.value + 120) ** 2),
+);
+const expandCircle = computed(() => scrollPercent.value >= 0.6);
 
 const circleStyles = computed(() => ({
     transition: "transform 0.5s ease",
     transform: expandCircle.value ? `scale(${maxCircleRadius.value / 1000})` : "scale(0)",
+}));
+
+const subheadingStyles = computed(() => ({
+    transition: "all 0.6s ease",
+    transform: initialPaint.value ? "translateY(0px)" : "translateY(40px)",
+    opacity: initialPaint.value ? 1 : 0,
+}));
+
+const buttonStyles = computed(() => ({
+    transitionProperty: "all",
+    transitionDuration: "0.5s",
+    transitionTimingFunction: "ease",
+    transform: initialPaint.value ? "translateY(0px)" : "translateY(30px)",
+    opacity: initialPaint.value ? 1 : 0,
 }));
 </script>
 
@@ -54,26 +56,31 @@ const circleStyles = computed(() => ({
                     src="/public/memoji.mp4?url"
                 />
             </div>
-            <h1 class="font-mono text-3xl mt-7" ref="name">
+            <h1 class="font-mono text-3xl mt-7">
                 <TypeEffect start text="Tanner Cecchetti" />
             </h1>
-            <div class="flex flex-col items-center mt-5 pb-7 px-2 border-b-[1px]" ref="subtitle">
+            <div class="flex flex-col items-center mt-5 pb-7 px-2 border-b-[1px]" :style="subheadingStyles">
                 <h2><span class="opacity-20">a</span> Software Engineer 👨‍💻</h2>
                 <h2><span class="opacity-20">in</span> Seattle, WA 🌳</h2>
             </div>
             <div class="flex items-center p-5">
-                <a href="mailto:t@nner.xyz" class="size-9 p-2 fill-zinc-800" v-html="emailSvg" ref="email" />
+                <a
+                    href="mailto:t@nner.xyz"
+                    class="size-9 p-2 fill-zinc-800 delay-200"
+                    v-html="emailSvg"
+                    :style="buttonStyles"
+                />
                 <a
                     href="https://github.com/lightningboltemoji"
-                    class="size-11 p-2 fill-zinc-800 ml-6"
+                    class="size-11 p-2 fill-zinc-800 ml-6 delay-300"
                     v-html="githubSvg"
-                    ref="github"
+                    :style="buttonStyles"
                 />
                 <a
                     href="https://www.linkedin.com/in/tanner-cecchetti/"
-                    class="size-10 p-2 fill-zinc-800 ml-6"
+                    class="size-10 p-2 fill-zinc-800 ml-6 delay-[400ms]"
                     v-html="linkedinSvg"
-                    ref="linkedin"
+                    :style="buttonStyles"
                 />
             </div>
         </div>
