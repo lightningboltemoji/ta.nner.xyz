@@ -6,13 +6,19 @@ import openjdkSvg from "~/public/icon/openjdk.svg?raw";
 import pythonSvg from "~/public/icon/python.svg?raw";
 import rustSvg from "~/public/icon/rust.svg?raw";
 import typescriptSvg from "~/public/icon/typescript.svg?raw";
+
+const print = () => window.print();
 </script>
 
 <template>
-    <div class="flex min-w-screen min-h-screen overflow-scroll screen:px-4 screen:py-16">
+    <div class="flex flex-col min-w-screen min-h-screen overflow-scroll screen:px-4 screen:py-16">
         <div class="fixed -z-10 bg-zinc-300 top-[-50vh] left-[-50vw] w-[200vw] h-[200vh] print:hidden"></div>
+        <div class="text-center pb-8 print:hidden">
+            <p class="pb-2">This page is designed to be converted to PDF</p>
+            <Bubble v-on:click="print" class="cursor-pointer" :colors="['black', 'white']">⌘+P → Save as PDF</Bubble>
+        </div>
         <div
-            class="m-auto flex flex-col min-w-[8.5in] max-w-[8.5in] min-h-[11in] max-h-[11in] box-content bg-white screen:border-[1px] screen:border-gray-300 screen:shadow-2xl"
+            class="m-auto flex flex-col min-w-[8.5in] max-w-[8.5in] min-h-[11in] max-h-[11in] box-content bg-white screen:border-[1px] screen:border-zinc-300 screen:shadow-2xl screen:shadow-zinc-500"
         >
             <div>
                 <h1 class="text-center pt-8 font-bold font-mono text-4xl">Tanner Cecchetti</h1>
@@ -24,6 +30,13 @@ import typescriptSvg from "~/public/icon/typescript.svg?raw";
             <div class="flex-grow inline-grid grid-cols-[280px_1fr] w-full [&_h2]:font-bold [&_h2]:text-2xl">
                 <div class="p-8 [&>div:not(:first-child)]:pt-8">
                     <div>
+                        <h2>Hi there 👋</h2>
+                        <div class="pt-2 text-sm">
+                            I've spent 9+ years building APIs, data pipelines, developer platforms, and the occassional
+                            UI. I'm passionate about finding elegant solutions that do more with less code.
+                        </div>
+                    </div>
+                    <div>
                         <h2>Contact</h2>
                         <div class="pt-2 inline-grid grid-cols-[auto_1fr]">
                             <span class="px-2 text-xs my-auto ml-auto opacity-60">email</span>
@@ -32,7 +45,7 @@ import typescriptSvg from "~/public/icon/typescript.svg?raw";
                             </span>
                             <span class="px-2 text-xs my-auto ml-auto opacity-60">phone</span>
                             <span>XXX-XXX-XXXX</span>
-                            <span class="px-2 text-xs my-auto ml-auto opacity-60">site</span>
+                            <span class="px-2 text-xs my-auto ml-auto opacity-60">links</span>
                             <span>
                                 <a href="https://ta.nner.xyz" target="_blank"> https://ta.nner.xyz </a>
                             </span>
@@ -64,7 +77,7 @@ import typescriptSvg from "~/public/icon/typescript.svg?raw";
                     <div>
                         <h2>Education</h2>
                         <div class="pt-2">
-                            <div class="text-md">Oregon State University</div>
+                            <div>Oregon State University</div>
                             <div class="text-sm">Computer Science, B.S., 2017</div>
                             <div class="text-xxs mt-1 [&>div:not(:first-child)]:ml-1">
                                 <Bubble :colors="['#aaaaaa', 'white']">3.97 GPA</Bubble>
@@ -73,18 +86,43 @@ import typescriptSvg from "~/public/icon/typescript.svg?raw";
                         </div>
                     </div>
                 </div>
-                <div class="p-8">
-                    <div>
-                        <div class="text-center pb-4">Hi there! 👋</div>
-                    </div>
+                <div class="p-8 [&>div:not(:first-child)]:mt-4">
                     <div>
                         <h2>Work experience</h2>
+                        <div class="flex flex-col mt-2">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3>Amazon Web Services (AWS)</h3>
+                                    <p class="text-xs">Software Development Engineer II (L5)</p>
+                                </div>
+                                <span>2022 -</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col mt-2">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3>HealthSparq (Kyruus Health)</h3>
+                                    <p class="text-xs">Intern → SDE I → SDE II → SDE III → Architect</p>
+                                </div>
+                                <p>2016 - 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>Skills</h2>
                     </div>
                     <div>
                         <h2>Outside of work</h2>
                     </div>
                 </div>
             </div>
+            <footer>
+                <div class="flex text-xs opacity-20 justify-center mb-1">
+                    <a href="https://github.com/lightningboltemoji/ta.nner.xyz" target="_blank">
+                        ↗ Built with Vue, Nuxt, and Tailwind CSS ❤️
+                    </a>
+                </div>
+            </footer>
         </div>
     </div>
 </template>
