@@ -11,7 +11,7 @@ const print = () => window.print();
 </script>
 
 <template>
-    <div class="flex flex-col min-w-screen min-h-screen overflow-scroll screen:px-4 screen:py-16">
+    <div class="flex flex-col w-min min-w-[100vw] min-h-screen screen:px-4 screen:py-16">
         <div class="fixed -z-10 bg-zinc-300 top-[-50vh] left-[-50vw] w-[200vw] h-[200vh] print:hidden"></div>
         <div class="text-center pb-8 print:hidden">
             <p class="pb-2">This page is designed to be converted to PDF</p>
@@ -28,7 +28,7 @@ const print = () => window.print();
                 </div>
             </div>
             <div class="flex-grow inline-grid grid-cols-[280px_1fr] w-full [&_h2]:font-bold [&_h2]:text-2xl">
-                <div class="p-8 [&>div:not(:first-child)]:pt-8">
+                <div class="py-8 pl-12 pr-0 [&>div:not(:first-child)]:pt-8">
                     <div>
                         <h2>Hi there 👋</h2>
                         <div class="pt-2 text-sm">
@@ -86,7 +86,7 @@ const print = () => window.print();
                         </div>
                     </div>
                 </div>
-                <div class="p-8 [&>div:not(:first-child)]:mt-4">
+                <div class="py-8 pl-8 pr-12 [&>div:not(:first-child)]:mt-4">
                     <div>
                         <h2>Work experience</h2>
                         <div class="flex flex-col mt-2">
