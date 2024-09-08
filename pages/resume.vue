@@ -14,7 +14,7 @@ const print = () => window.print();
     <div class="flex flex-col w-min min-w-[100vw] min-h-screen screen:px-4 screen:py-16">
         <div class="fixed -z-10 bg-zinc-300 top-[-50vh] left-[-50vw] w-[200vw] h-[200vh] print:hidden"></div>
         <div class="text-center pb-8 print:hidden">
-            <p class="pb-2">This page is designed to be converted to PDF</p>
+            <p class="text-sm pb-2">This page is designed to be converted to PDF</p>
             <Bubble v-on:click="print" class="cursor-pointer" :colors="['black', 'white']">⌘+P → Save as PDF</Bubble>
         </div>
         <div
@@ -32,8 +32,11 @@ const print = () => window.print();
                     <div>
                         <h2>Hi there 👋</h2>
                         <div class="pt-2 text-sm">
-                            I've spent 9+ years building APIs, data pipelines, developer platforms, and the occassional
-                            UI. I'm passionate about finding elegant solutions that do more with less code.
+                            I've spent 8+ years building APIs, data pipelines, developer platforms, and the occassional
+                            UI.
+                        </div>
+                        <div class="pt-2 text-sm">
+                            I'm passionate about finding elegant solutions that do more with less code.
                         </div>
                     </div>
                     <div>
@@ -56,18 +59,18 @@ const print = () => window.print();
                     <div>
                         <h2>Technologies</h2>
                         <div class="pt-2">
-                            <div class="text-xxs opacity-60">Strongest</div>
+                            <div class="text-xs opacity-60">Strongest</div>
                             <div class="text-xs [&>*]:mt-1 [&>div:not(:first-child)]:ml-1">
                                 <Bubble :colors="['#5382a1', 'white']" :icon="openjdkSvg">Java</Bubble>
                                 <Bubble :colors="['#ffde57', 'black']" :icon="pythonSvg">Python</Bubble>
                             </div>
-                            <div class="text-xxs opacity-60 pt-2">Learning</div>
+                            <div class="text-xs opacity-60 pt-2">Learning</div>
                             <div class="text-xs [&>*]:mt-1 [&>div:not(:first-child)]:ml-1">
                                 <Bubble :colors="['#f46623', 'black']" :icon="rustSvg">Rust</Bubble>
                                 <Bubble :colors="['#00add8', 'black']" :icon="goSvg">Go</Bubble>
                                 <Bubble :colors="['#3178c6', 'white']" :icon="typescriptSvg">TypeScript</Bubble>
                             </div>
-                            <div class="text-xxs opacity-60 pt-2">Clouds</div>
+                            <div class="text-xs opacity-60 pt-2">Clouds</div>
                             <div class="text-xs [&>*]:mt-1">
                                 <Bubble :colors="['#ff9900', 'black']" :icon="awsSvg">Amazon Web Services</Bubble>
                                 <Bubble :colors="['#4285f4', 'white']" :icon="gcpSvg">Google Cloud Platform</Bubble>
