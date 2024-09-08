@@ -36,5 +36,8 @@ onUnmounted(stop);
 </script>
 
 <template>
-    <div ref="container">{{ value }}<span :style="{ visibility: cursor }">▌</span></div>
+    <div class="py-1" ref="container">
+        <span>{{ value }}</span>
+        <span class="p-1" :style="{ visibility: cursor }">█</span>
+    </div>
 </template>
