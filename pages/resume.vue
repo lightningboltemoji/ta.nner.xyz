@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useWindowSize } from "@vueuse/core";
 import awsSvg from "~/public/icon/aws.svg?raw";
 import gcpSvg from "~/public/icon/gcp.svg?raw";
 import goSvg from "~/public/icon/go.svg?raw";
@@ -7,14 +8,18 @@ import pythonSvg from "~/public/icon/python.svg?raw";
 import rustSvg from "~/public/icon/rust.svg?raw";
 import typescriptSvg from "~/public/icon/typescript.svg?raw";
 
+const sz = useWindowSize();
+onMounted(() => window.scrollTo(sz.width.value / 2, 0));
+
 const print = () => window.print();
 </script>
 
 <template>
     <div class="flex flex-col w-min min-w-[100vw] min-h-screen screen:px-4 screen:py-16">
-        <div class="fixed -z-10 bg-zinc-300 top-[-50vh] left-[-50vw] w-[200vw] h-[200vh] print:hidden"></div>
-        <div class="text-center pb-8 print:hidden">
-            <p class="text-sm pb-2">This page is designed to be converted to PDF</p>
+        <div class="fixed -z-10 top-[-50vh] left-[-50vw] w-[200vw] h-[200vh] print:hidden"></div>
+        <div class="select-none text-center pb-8 print:hidden">
+            <p class="text-sm">This page is designed to be converted to PDF</p>
+            <p class="text-xs pb-2 opacity-40">(Chromium-based browsers only, unfortunately)</p>
             <Bubble v-on:click="print" class="cursor-pointer" :colors="['black', 'white']">⌘+P → Save as PDF</Bubble>
         </div>
         <div
@@ -119,13 +124,19 @@ const print = () => window.print();
                     </div>
                 </div>
             </div>
-            <footer>
-                <div class="flex text-xs opacity-20 justify-center mb-1">
-                    <a href="https://github.com/lightningboltemoji/ta.nner.xyz" target="_blank">
-                        ↗ Built with Vue, Nuxt, and Tailwind CSS ❤️
-                    </a>
-                </div>
-            </footer>
         </div>
+        <footer class="print:hidden">
+            <div class="flex text-xs opacity-40 justify-center mt-8">
+                <a href="https://github.com/lightningboltemoji/ta.nner.xyz" target="_blank">
+                    ↗ Built with Vue, Nuxt, and Tailwind CSS ❤️
+                </a>
+            </div>
+        </footer>
     </div>
 </template>
+
+<style>
+body {
+    @apply bg-zinc-300;
+}
+</style>
