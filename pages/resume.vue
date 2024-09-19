@@ -35,7 +35,9 @@ const print = () => window.print();
             <div class="flex-grow inline-grid grid-cols-[280px_1fr] w-full [&_h2]:font-bold [&_h2]:text-2xl">
                 <div class="py-8 pl-12 pr-0 [&>div:not(:first-child)]:pt-8">
                     <div>
-                        <h2>Hi there 👋</h2>
+                        <h2 class="flex items-center">
+                            Hi there <img class="inline w-6 h-6 ml-1" src="/waving-hand.png" />
+                        </h2>
                         <div class="pt-2 text-sm">
                             I've spent 8+ years building APIs, data pipelines, developer platforms, and the occassional
                             UI.
