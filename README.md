@@ -1,6 +1,6 @@
 # [ta.nner.xyz](https://ta.nner.xyz)
 
-![Deploy Nuxt.js site to Pages](https://github.com/lightningboltemoji/ta.nner.xyz/actions/workflows/nuxtjs.yml/badge.svg)
+![Deploy SvelteKit site to Pages](https://github.com/lightningboltemoji/ta.nner.xyz/actions/workflows/sveltekit.yml/badge.svg)
 
 ## Setup
 
@@ -10,7 +10,7 @@ bun i
 
 ## Development
 
-Start the development server on `http://localhost:3000`:
+Start the development server on `http://localhost:5173`:
 
 ```bash
 bun dev
@@ -21,11 +21,11 @@ bun dev
 Build the application for production:
 
 ```bash
-bun generate
+bun run build
 ```
 
-Locally preview production build:
+Locally preview production build on `http://localhost:4173`:
 
 ```bash
-bun preview
+bun run preview
 ```
