@@ -2,25 +2,27 @@
   import { ss } from '$lib/style-string';
   import TypeEffect from './type-effect.svelte';
 
-  let scrollY = $state(0);
-  let offsetHeight = $state(0);
   let innerWidth = $state(0);
   let innerHeight = $state(0);
-  let scrollPercent = $derived(scrollY / (offsetHeight - innerHeight));
-
   let maxCircleRadius = $derived(Math.sqrt((innerWidth / 2) ** 2 + (innerHeight + 120) ** 2));
-  let expandCircle = $derived(scrollPercent >= 0.6);
+
+  let expandCircle = $state(false);
 
   let circleStyles = $derived({
     transition: 'transform 0.5s ease',
     transform: expandCircle ? `scale(${maxCircleRadius / 1000})` : 'scale(0)',
   });
+
+  function setupObserver(node: HTMLDivElement) {
+    const observer = new IntersectionObserver((e) => (expandCircle = e[0].isIntersecting), { threshold: 0.5 });
+    observer.observe(node);
+    return { destroy: () => observer.disconnect() };
+  }
 </script>
 
-<svelte:window bind:scrollY bind:innerWidth bind:innerHeight />
-<svelte:body bind:offsetHeight />
+<svelte:window bind:innerWidth bind:innerHeight />
 
-<div class="flex flex-col justify-center items-center min-w-screen min-h-screen text-white">
+<div class="flex flex-col justify-center items-center min-w-screen min-h-screen text-white" use:setupObserver>
   <div class="flex flex-col justify-center items-center z-20">
     <h1 class="font-mono text-3xl mt-7 mb-5">
       <TypeEffect text="Work experience" />
