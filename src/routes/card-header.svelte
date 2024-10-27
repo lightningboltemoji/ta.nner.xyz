@@ -73,16 +73,19 @@
     </div>
     <div class="flex items-center p-5 [&>*:not(:first-child)]:ml-6">
       {#each links as link}
-        <div class="flex relative group">
-          <a href={link.href} class={`p-2 fill-zinc-800 ${link.class}`} style={ss(buttonStyles)} aria-label={link.name}>
-            {@html link.icon}
-          </a>
+        <a
+          href={link.href}
+          class={`group p-2 fill-zinc-800 ${link.class}`}
+          style={ss(buttonStyles)}
+          aria-label={link.name}
+        >
+          {@html link.icon}
           <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 transition duration-300 opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-6"
           >
             {link.name}
           </div>
-        </div>
+        </a>
       {/each}
     </div>
   </div>
