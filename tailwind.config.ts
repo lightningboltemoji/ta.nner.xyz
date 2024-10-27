@@ -6,17 +6,17 @@ const config: Partial<Config> = {
   theme: {
     extend: {
       screens: {
-        screen: { raw: 'screen' }
+        screen: { raw: 'screen' },
       },
       fontFamily: {
         sans: ['"Inter Variable"', ...defaultTheme.fontFamily.sans],
-        mono: ["'IBM Plex Mono'", ...defaultTheme.fontFamily.mono]
+        mono: ["'IBM Plex Mono'", ...defaultTheme.fontFamily.mono],
       },
       fontSize: {
-        xxs: '0.6rem'
-      }
-    }
+        xxs: '0.6rem',
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
 export default config;
