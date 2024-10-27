@@ -14,7 +14,7 @@
   import terraformSvg from '$lib/icon/terraform.svg?raw';
   import typescriptSvg from '$lib/icon/typescript.svg?raw';
   import vueSvg from '$lib/icon/vuedotjs.svg?raw';
-  import Bubble from '$lib/bubble.svelte';
+  import Bubble from './bubble.svelte';
   import Chevron from './chevron.svelte';
 
   let offsetWidth = $state(0);
