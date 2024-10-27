@@ -29,10 +29,8 @@ jobs:
       - name: Build with SvelteKit
         run: bun run build
       - name: Deploy to CloudFlare Pages
-        uses: cloudflare/pages-action@1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ta-nner-xyz
-          directory: build
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: pages deploy build --project-name=ta-nner-xyz
