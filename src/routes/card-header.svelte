@@ -81,7 +81,7 @@
         >
           {@html link.icon}
           <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 transition duration-300 opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-6"
+            class="absolute text-sm top-1/2 left-1/2 -translate-x-1/2 transition duration-300 opacity-0 translate-y-10 group-hover:opacity-60 group-hover:translate-y-6"
           >
             {link.name}
           </div>
