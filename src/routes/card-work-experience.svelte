@@ -2,15 +2,13 @@
   import { ss } from '$lib/style-string';
   import TypeEffect from './type-effect.svelte';
 
-  let innerWidth = $state(0);
   let innerHeight = $state(0);
-  let maxCircleRadius = $derived(Math.sqrt((innerWidth / 2) ** 2 + (innerHeight + 120) ** 2));
+  let maxCircleDiameter = $derived(innerHeight * 1.2 + 60);
 
   let expandCircle = $state(false);
-
   let circleStyles = $derived({
     transition: 'transform 0.4s ease',
-    transform: expandCircle ? `scale(${maxCircleRadius / 2000})` : 'scale(0)',
+    transform: expandCircle ? `scale(${maxCircleDiameter / 2000})` : 'scale(0)',
   });
 
   function setupObserver(node: HTMLDivElement) {
@@ -20,7 +18,7 @@
   }
 </script>
 
-<svelte:window bind:innerWidth bind:innerHeight />
+<svelte:window bind:innerHeight />
 
 <div class="flex relative flex-col justify-center items-center min-w-screen min-h-screen text-white" use:setupObserver>
   <div class="flex flex-col justify-center items-center z-20">
