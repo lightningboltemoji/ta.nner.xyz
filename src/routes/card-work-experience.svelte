@@ -14,7 +14,7 @@
   });
 
   function setupObserver(node: HTMLDivElement) {
-    const observer = new IntersectionObserver((e) => (expandCircle = e[0].isIntersecting), { threshold: 0.35 });
+    const observer = new IntersectionObserver((e) => (expandCircle = e[0].isIntersecting), { threshold: 0.25 });
     observer.observe(node);
     return { destroy: () => observer.disconnect() };
   }
