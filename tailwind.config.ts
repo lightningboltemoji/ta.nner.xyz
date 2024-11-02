@@ -18,5 +18,8 @@ const config: Partial<Config> = {
     },
   },
   plugins: [],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 };
 export default config;
