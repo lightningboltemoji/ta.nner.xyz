@@ -34,6 +34,9 @@
 
       {@render header('terminal')}
       {@render externalLink('kitty', 'https://github.com/kovidgoyal/kitty')}
+
+      {@render header('notes')}
+      {@render externalLink('Obsidian', 'https://obsidian.md')}
     </div>
   </div>
 </div>
