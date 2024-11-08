@@ -40,15 +40,7 @@
 <div class="flex flex-col justify-center items-center min-w-screen min-h-screen">
   <div class="flex flex-col justify-center items-center pb-[10vh] md:pb-0">
     <div class="relative">
-      <video
-        class="size-[200px] bg-black rounded-full"
-        autoPlay
-        loop
-        muted
-        playsInline
-        src="/memoji.mp4"
-        aria-hidden="true"
-      ></video>
+      <video class="size-[200px] bg-black rounded-full" autoPlay loop muted playsInline src="/memoji.mp4"></video>
     </div>
     <h1 class="font-mono text-3xl mt-7">
       <TypeEffect text="Tanner Cecchetti" />
