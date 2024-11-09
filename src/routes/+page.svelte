@@ -6,7 +6,6 @@
 
 <svelte:head>
   <title>Tanner Cecchetti (ta.nner.xyz)</title>
-  <meta name="description" content="A software engineer in Seattle, WA" />
 </svelte:head>
 
 <CardHeader />

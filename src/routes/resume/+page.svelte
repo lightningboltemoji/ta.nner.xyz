@@ -28,7 +28,7 @@
 <svelte:body bind:offsetWidth />
 
 <svelte:head>
-  <title>Tanner Cecchetti - Resume</title>
+  <title>Tanner Cecchetti (ta.nner.xyz) - Resume</title>
 </svelte:head>
 
 <div class="flex flex-col w-min min-w-[100vw] min-h-screen screen:px-4 screen:py-16">
