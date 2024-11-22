@@ -30,7 +30,10 @@
       </span>
 
       {@render header('window mgmt')}
-      {@render externalLink('AeroSpace', 'https://github.com/nikitabobko/AeroSpace')}
+      <span>
+        {@render externalLink('AeroSpace', 'https://github.com/nikitabobko/AeroSpace')},
+        {@render externalLink('SketchyBar', 'https://github.com/FelixKratz/SketchyBar')}
+      </span>
 
       {@render header('terminal')}
       {@render externalLink('kitty', 'https://github.com/kovidgoyal/kitty')}
