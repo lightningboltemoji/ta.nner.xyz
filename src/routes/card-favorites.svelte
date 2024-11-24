@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TypeEffect from './type-effect.svelte';
+  import HeadingTypeEffect from './heading-type-effect.svelte';
 </script>
 
 {#snippet header(text: string)}
@@ -7,15 +7,13 @@
 {/snippet}
 
 {#snippet externalLink(text: string, href: string)}
-  <a class="hover:underline decoration-dotted" {href} target="_blank">{text} ↗</a>
+  <a class="hover:underline decoration-dotted whitespace-nowrap" {href} target="_blank">{text} ↗</a>
 {/snippet}
 
 <div class="flex relative flex-col justify-center items-center min-w-screen min-h-screen">
   <div class="flex flex-col justify-center items-center z-20">
-    <h1 class="font-mono text-3xl mt-7 mb-5">
-      <TypeEffect text="Favorite things :)" />
-    </h1>
-    <div class="grid grid-cols-2 gap-x-3 px-6">
+    <HeadingTypeEffect class="font-mono text-3xl mt-7 mb-5" text="Favorite things :)" />
+    <div class="grid grid-cols-2 gap-x-3 px-6 gap-y-1">
       {@render header('operating system')}
       <span>macOS</span>
 

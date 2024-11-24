@@ -4,7 +4,7 @@
   import githubSvg from '$lib/icon/github-alt.svg?raw';
   import linkedinSvg from '$lib/icon/linkedin.svg?raw';
   import emailSvg from '$lib/icon/paper-plane.svg?raw';
-  import TypeEffect from './type-effect.svelte';
+  import HeadingTypeEffect from './heading-type-effect.svelte';
 
   let initialPaint = $state(false);
   onMount(() => requestAnimationFrame(() => requestAnimationFrame(() => (initialPaint = true))));
@@ -42,9 +42,7 @@
     <div class="relative">
       <video class="size-[200px] bg-black rounded-full" autoPlay loop muted playsInline src="/memoji.mp4"></video>
     </div>
-    <h1 class="font-mono text-3xl mt-7">
-      <TypeEffect text="Tanner Cecchetti" />
-    </h1>
+    <HeadingTypeEffect class="font-mono text-3xl mt-7" text="Tanner Cecchetti" />
     <div class="flex flex-col items-center mt-5 pb-7 px-2 border-b-[1px]" style={ss(subheadingStyles)}>
       <h2>
         <span class="opacity-60">a</span>

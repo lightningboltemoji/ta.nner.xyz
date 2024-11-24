@@ -1,6 +1,6 @@
 <script lang="ts">
   import { ss } from '$lib/style-string';
-  import TypeEffect from './type-effect.svelte';
+  import HeadingTypeEffect from './heading-type-effect.svelte';
 
   let innerHeight = $state(0);
   let maxCircleDiameter = $derived(innerHeight * 1.2 + 60);
@@ -22,9 +22,7 @@
 
 <div class="flex relative flex-col justify-center items-center min-w-screen min-h-screen text-white" use:setupObserver>
   <div class="flex flex-col justify-center items-center z-20">
-    <h1 class="font-mono text-3xl mt-7 mb-5">
-      <TypeEffect text="Work experience" />
-    </h1>
+    <HeadingTypeEffect class="font-mono text-3xl mt-7 mb-5" text="Work experience" />
     <h2>Amazon Web Services, 2022 -</h2>
     <h2>HealthSparq, 2015 - 2022</h2>
   </div>
