@@ -38,6 +38,18 @@
 
       {@render header('notes')}
       {@render externalLink('Obsidian', 'https://obsidian.md')}
+
+      {@render header('hardware')}
+      <span>
+        {@render externalLink('MacBook Air', 'https://support.apple.com/en-us/118552')},
+        {@render externalLink('Vision Pro', 'https://www.apple.com/apple-vision-pro/')}
+      </span>
+
+      {@render header('keyboard')}
+      {@render externalLink(
+        'NuPhy Halo75 V2',
+        'https://nuphy.com/products/halo75-v2-qmk-via-wireless-custom-mechanical-keyboard?variant=41037253935213',
+      )}
     </div>
   </div>
 </div>
