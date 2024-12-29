@@ -34,7 +34,7 @@
       </span>
 
       {@render header('terminal')}
-      {@render externalLink('kitty', 'https://github.com/kovidgoyal/kitty')}
+      {@render externalLink('Ghostty', 'https://github.com/ghostty-org/ghostty')}
 
       {@render header('notes')}
       {@render externalLink('Obsidian', 'https://obsidian.md')}
