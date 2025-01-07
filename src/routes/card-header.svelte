@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { ss } from '$lib/style-string';
   import githubSvg from '$lib/icon/github-alt.svg?raw';
   import linkedinSvg from '$lib/icon/linkedin.svg?raw';
   import emailSvg from '$lib/icon/paper-plane.svg?raw';
+  import { ss } from '$lib/style-string';
   import HeadingTypeEffect from './heading-type-effect.svelte';
+  import { onMount } from 'svelte';
 
   let initialPaint = $state(false);
   onMount(() => requestAnimationFrame(() => requestAnimationFrame(() => (initialPaint = true))));

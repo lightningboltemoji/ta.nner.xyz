@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { ss } from '$lib/style-string';
   import { hashCode } from '$lib/hash';
+  import { ss } from '$lib/style-string';
 
   const props = $props<{
     class: string;
