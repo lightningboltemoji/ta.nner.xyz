@@ -1,25 +1,9 @@
 import type { Config } from 'tailwindcss';
-import defaultTheme from 'tailwindcss/defaultTheme';
 
-const config: Partial<Config> = {
+export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
-  theme: {
-    extend: {
-      screens: {
-        screen: { raw: 'screen' },
-      },
-      fontFamily: {
-        sans: ['"Inter Variable"', ...defaultTheme.fontFamily.sans],
-        mono: ["'IBM Plex Mono'", ...defaultTheme.fontFamily.mono],
-      },
-      fontSize: {
-        xxs: '0.6rem',
-      },
-    },
-  },
   plugins: [],
   future: {
     hoverOnlyWhenSupported: true,
   },
-};
-export default config;
+} satisfies Config;

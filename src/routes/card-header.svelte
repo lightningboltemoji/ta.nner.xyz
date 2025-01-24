@@ -43,7 +43,7 @@
       <video class="size-[200px] bg-black rounded-full" autoPlay loop muted playsInline src="/memoji.mp4"></video>
     </div>
     <HeadingTypeEffect class="font-mono text-3xl mt-7" text="Tanner Cecchetti" />
-    <div class="flex flex-col items-center mt-5 pb-7 px-2 border-b-[1px]" style={ss(subheadingStyles)}>
+    <div class="flex flex-col items-center mt-5 pb-7 px-2 border-gray-200 border-b" style={ss(subheadingStyles)}>
       <h2>
         <span class="opacity-60">a</span>
         Software Engineer 👨‍💻
@@ -53,7 +53,7 @@
         Seattle, WA 🌳
       </h2>
     </div>
-    <div class="flex items-center p-5 [&>*:not(:first-child)]:ml-6">
+    <div class="flex items-center p-5 *:[:not(:first-child)]:ml-6">
       {@render link('Email', 'mailto:t@nner.xyz', 'size-9 delay-200', emailSvg)}
       {@render link('GitHub', 'https://github.com/lightningboltemoji', 'size-11 delay-300', githubSvg)}
       {@render link('LinkedIn', 'https://www.linkedin.com/in/tanner-cecchetti/', 'size-11 delay-[400ms]', linkedinSvg)}
