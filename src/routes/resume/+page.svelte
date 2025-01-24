@@ -192,6 +192,6 @@
 <style>
   :global(body) {
     width: max-content;
-    @apply bg-zinc-300;
+    background-color: var(--color-zinc-300);
   }
 </style>
