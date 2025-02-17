@@ -16,7 +16,7 @@
 
 <svelte:element
   this={tag}
-  class="inline-block rounded-full px-2 py-1"
+  class={`inline-block rounded-full px-2 py-1 ${props.class}`}
   style={ss({ 'background-color': props.colors[0], color: props.colors[1] })}
   onclick={props.onclick}
   {role}
