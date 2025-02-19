@@ -1,21 +1,53 @@
 <script lang="ts">
   import { decrypt, encrypt } from '$lib/encrypt';
   import { password } from '$lib/password.svelte';
+  import { placeholderText } from '../redacted.svelte';
   import { parse } from 'svelte/compiler';
 
+  let canvas: HTMLCanvasElement;
   let plaintext = $state('');
   let placeholder = $state('');
   let redacted = $state('');
 
+  const passwordValidated = $derived(
+    typeof password.current === 'string' && password.current.length > 20 ? password.current : '',
+  );
+
   $effect(() => {
-    if (password.current) {
-      onPlaintextChanged();
-    }
+    passwordValidated;
+    onPlaintextChanged();
+  });
+
+  const placeholderLength = $derived.by(() => {
+    if (!canvas) return 0;
+
+    const ctx = canvas.getContext('2d');
+    const measure = (text: string) => ctx!.measureText(text).width;
+    const targetWidth = measure(plaintext);
+
+    let left = 0;
+    let right = 10000;
+    let e = 500;
+    // 30 iterations of binary search to converge on what placeholder length best matches actual text
+    [...Array(30)].forEach((_) => {
+      e = (right - left) / 2 + left;
+      const placeholderWidth = measure(placeholderText(e));
+      if (placeholderWidth > targetWidth) {
+        right = e;
+      } else {
+        left = e;
+      }
+    });
+    return Math.round(e);
   });
 
   const onPlaintextChanged = async () => {
-    const enc = await encrypt(plaintext, password.current);
-    const placeholderProp = placeholder ? ` placeholder="${placeholder}"` : ` placeholderLength={${plaintext.length}}`;
+    if (!passwordValidated) {
+      redacted = '';
+      return;
+    }
+    const enc = await encrypt(plaintext, passwordValidated);
+    const placeholderProp = placeholder ? `placeholder="${placeholder}"` : `placeholderLength={${placeholderLength}}`;
     redacted = `<Redacted ciphertext="${enc.ciphertext}" salt="${enc.salt}" iv="${enc.iv}" ${placeholderProp} />`;
   };
 
@@ -36,7 +68,7 @@
         salt: attrs.find((a: any) => a.name == 'salt').value[0].data,
         iv: attrs.find((a: any) => a.name == 'iv').value[0].data,
       },
-      password.current,
+      passwordValidated,
     );
     placeholder = attrs.find((a: any) => a.name == 'placeholder')?.value[0]?.data ?? '';
   };
@@ -59,14 +91,15 @@
   </div>
   <div>
     <h2>Plaintext</h2>
-    <textarea class="border w-96" bind:value={plaintext} oninput={onPlaintextChanged}></textarea>
+    <textarea class="border w-96 h-48" bind:value={plaintext} oninput={onPlaintextChanged}></textarea>
   </div>
   <div>
     <h2>Placeholder</h2>
-    <textarea class="border w-96" bind:value={placeholder} oninput={onPlaintextChanged}></textarea>
+    <textarea class="border w-96 h-48" bind:value={placeholder} oninput={onPlaintextChanged}></textarea>
   </div>
   <div>
     <h2>Redacted element</h2>
-    <textarea class="border w-96" bind:value={redacted} oninput={onRedactedChanged}></textarea>
+    <textarea class="border w-96 h-48" bind:value={redacted} oninput={onRedactedChanged}></textarea>
   </div>
+  <canvas class="text-xs" bind:this={canvas}></canvas>
 </div>
