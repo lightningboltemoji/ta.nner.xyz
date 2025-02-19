@@ -25,7 +25,7 @@
 </script>
 
 {#snippet blurred()}
-  <span class="blur-xs animate-pulse select-none">{placeholder}</span>
+  <span class="blur-xs motion-safe:animate-pulse select-none">{placeholder}</span>
 {/snippet}
 
 {#await plaintext}
